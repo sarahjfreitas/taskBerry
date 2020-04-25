@@ -1,4 +1,4 @@
-package app.utils;
+package app.util;
 
         import lombok.*;
 
@@ -11,5 +11,11 @@ public class Path {
         @Getter public static final String LOGOUT = "/logout/";
         @Getter public static final String TASKS = "/task/";
         @Getter public static final String TASK = "/task/:id/";
+    }
+
+    // Views paths
+    public static class Template {
+        public final static String INDEX = "/views/index/index.vm";
+        public static final String NOT_FOUND = "/views/notFound.vm";
     }
 }

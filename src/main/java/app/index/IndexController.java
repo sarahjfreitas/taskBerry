@@ -1,21 +1,13 @@
 package app.index;
 
-import app.IController;
-import spark.Route;
+import spark.*;
+import java.util.*;
 
-public class IndexController implements IController {
+import app.util.*;
 
-    public Route index() {
-        return null;
-    }
-
-    public Route show() { throw new UnsupportedOperationException();}
-
-    public Route edit() {
-        throw new UnsupportedOperationException();
-    }
-
-    public Route add() {
-        throw new UnsupportedOperationException();
-    }
+public class IndexController {
+    public static Route index = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.INDEX);
+    };
 }
