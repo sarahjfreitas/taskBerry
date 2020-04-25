@@ -1,6 +1,7 @@
 import app.ControllerFactory;
 import app.utils.Path;
 
+import static spark.debug.DebugScreen.*;
 import static spark.Spark.*;
 
 public class Application {
@@ -24,6 +25,6 @@ public class Application {
         port(4567);
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
-        //enableDebugScreen();
+        enableDebugScreen();
     }
 }
