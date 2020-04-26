@@ -2,7 +2,7 @@ import static spark.debug.DebugScreen.*;
 import static spark.Spark.*;
 
 import app.index.IndexController;
-        import app.util.*;
+import app.util.*;
 
 public class Application {
     public static void main(String[] args){
