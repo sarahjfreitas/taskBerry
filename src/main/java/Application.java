@@ -3,6 +3,7 @@ import static spark.Spark.*;
 
 import app.index.IndexController;
 import app.project.ProjectController;
+import app.task.TaskController;
 import app.util.*;
 
 public class Application {
@@ -26,6 +27,13 @@ public class Application {
         post("/projects/",ProjectController.create);
         post("/projects/edit/:id/", ProjectController.update);
         get("/projects/delete/:id/", ProjectController.delete);
+
+        get("/tasks/", TaskController.index);
+        get("/tasks/new/", TaskController.add);
+        get("/tasks/edit/:id/", TaskController.edit);
+        post("/tasks/",TaskController.create);
+        post("/tasks/edit/:id/", TaskController.update);
+        get("/tasks/delete/:id/", TaskController.delete);
 
         get("*", IndexController.index);
         

@@ -1,0 +1,39 @@
+#parse("/views/layout.vm")
+#@mainLayout()
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Edit Task</h1>
+</div>
+<form action="/tasks/edit/$task.getTaskId()/" method="post">
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control form-control-lg" name="name" value="$task.getName()">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Description:</label>
+            <textarea type="text" class="form-control form-control-lg"
+                      name="description">$task.getDescription()</textarea>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Responsible:</label>
+            <select class="form-control form-control-lg"
+                    name="responsible" value="$task.getResponsible().getUserId()">
+                #foreach($user in $users)
+                    <option value="$user.getUserId()">$user.getName()</option>
+                #end
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Status:</label>
+            <select class="form-control form-control-lg" name="currentStatus" value="$task.getCurrentStatus().name()">
+                #foreach($status in $statuses)
+                    <option value="$status.name()">$status.name()</option>
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="float-right">
+        <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>
+    </div>
+</form>
+#end

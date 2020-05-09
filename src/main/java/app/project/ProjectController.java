@@ -1,12 +1,13 @@
 package app.project;
 
+import app.AppController;
 import app.login.LoginController;
 import app.util.*;
 import spark.*;
 import java.time.Instant;
 import java.util.*;
 
-public class ProjectController {
+public class ProjectController extends AppController {
     public static Route index = (Request request, Response response) -> {
         List<Project> projects = ProjectDao.findAll();
         Map<String, Object> model = new HashMap<>();

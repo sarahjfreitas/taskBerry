@@ -7,6 +7,9 @@ import app.project.ProjectTranslator;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserDao {
     private Sql2o sql2o;
 
@@ -18,4 +21,12 @@ public class UserDao {
         user.setEmail("admin@admin.com");
         return user;
     }
+
+    // TODO: CHANGE TO FIND IN DB
+    public static List<User> findAll() {
+        List<User> users = new ArrayList<User>();
+        users.add(find(1));
+        return users;
+    }
+
 }

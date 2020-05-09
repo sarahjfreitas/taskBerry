@@ -24,7 +24,7 @@
         <td>$project.getProjectId()</td>
         <td>$project.getName()</td>
         <td>$project.getActivationDescription()</td>
-        <td>$project.getFormatedCreatedIn()</td>
+        <td>$project.getFormattedCreatedIn()</td>
         <td>
             #if($project.isActive())
                 <a class="btn btn-outline-dark" href="/projects/edit/$project.getProjectId()/"><i class="fas fa-edit"></i></a>

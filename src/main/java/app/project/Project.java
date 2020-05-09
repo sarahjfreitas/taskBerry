@@ -1,5 +1,6 @@
 package app.project;
 
+import app.AppModel;
 import app.task.Task;
 import app.user.User;
 import java.time.Instant;
@@ -7,12 +8,11 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class Project {
+public class Project extends AppModel {
     private int projectId;
     private String name;
     private boolean active;
     private List<Task> tasks;
-    private Instant createdIn;
     private Instant updatedIn;
     private Instant disabledIn;
     private User createdBy;
@@ -31,9 +31,6 @@ public class Project {
 
     public List<Task> getTasks() { return tasks; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
-
-    public Instant getCreatedIn() { return createdIn; }
-    public void setCreatedIn(Instant createdIn) { this.createdIn = createdIn; }
 
     public Instant getUpdatedIn() { return updatedIn;}
     public void setUpdatedIn(Instant updatedIn) { this.updatedIn = updatedIn; }
@@ -55,10 +52,5 @@ public class Project {
             return "Activated";
         }
         return "Deactivated";
-    }
-
-    public String getFormatedCreatedIn(){
-        DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
-        return DATE_TIME_FORMATTER.format(createdIn);
     }
 }

@@ -1,0 +1,37 @@
+#parse("/views/layout.vm")
+#@mainLayout()
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">New Task</h1>
+</div>
+<form action="/tasks/" method="post">
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control form-control-lg" name="name">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Project:</label>
+            <select class="form-control form-control-lg" name="projectId">
+                #foreach($project in $projects)
+                    <option value="$project.getProjectId()">$project.getName()</option>
+                #end
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Description:</label>
+            <textarea type="text" class="form-control form-control-lg" name="description"></textarea>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="name">Responsible:</label>
+            <select class="form-control form-control-lg" name="responsible">
+                #foreach($user in $users)
+                    <option value="$user.getUserId()">$user.getName()</option>
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="float-right">
+        <button class="btn btn-success"><i class="fa fa-plus"></i> Create</button>
+    </div>
+</form>
+#end
