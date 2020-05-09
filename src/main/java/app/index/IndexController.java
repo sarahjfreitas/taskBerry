@@ -1,9 +1,8 @@
 package app.index;
 
+import app.util.*;
 import spark.*;
 import java.util.*;
-
-import app.util.*;
 
 public class IndexController {
     public static Route index = (Request request, Response response) -> {

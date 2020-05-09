@@ -2,6 +2,7 @@ import static spark.debug.DebugScreen.*;
 import static spark.Spark.*;
 
 import app.index.IndexController;
+import app.project.ProjectController;
 import app.util.*;
 
 public class Application {
@@ -19,7 +20,15 @@ public class Application {
         before("*", Filters.handleLocaleChange);
 
         // routes
-        get(Path.Web.INDEX, IndexController.index);
+        get("/projects/", ProjectController.index);
+        get("/projects/new/", ProjectController.add);
+        get("/projects/edit/:id/", ProjectController.edit);
+        post("/projects/",ProjectController.create);
+        post("/projects/edit/:id/", ProjectController.update);
+        get("/projects/delete/:id/", ProjectController.delete);
+
+        get("*", IndexController.index);
+        
 
         // after-filters (called after each get/post)
         after("*", Filters.addGzipHeader);

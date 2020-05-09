@@ -32,7 +32,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -51,30 +51,19 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Dashboard <span class="sr-only">(current)</span>
-                        </a>
+                        <a class="nav-link active" href="/">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Projects
-                        </a>
+                        <a class="nav-link" href="/projects/">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Tasks
-                        </a>
+                        <a class="nav-link" href="/tasks/">Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Users
-                        </a>
+                        <a class="nav-link" href="/users/">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            Reports
-                        </a>
+                        <a class="nav-link" href="/reports/">Reports</a>
                     </li>
                 </ul>
             </div>
@@ -95,9 +84,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-
+<script src="https://kit.fontawesome.com/2c9b416714.js" crossorigin="anonymous"></script>
 <script src="dashboard.js"></script>
 </body>
 </html>

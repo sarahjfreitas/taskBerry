@@ -2,8 +2,9 @@ package app.project;
 
 import app.task.Task;
 import app.user.User;
-
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Project {
@@ -11,12 +12,12 @@ public class Project {
     private String name;
     private boolean active;
     private List<Task> tasks;
-    private LocalDate createdIn;
-    private LocalDate updatedIn;
-    private LocalDate deactivateIn;
+    private Instant createdIn;
+    private Instant updatedIn;
+    private Instant disabledIn;
     private User createdBy;
     private User updatedBy;
-    private User deactivateBy;
+    private User disabledBy;
 
     public int getProjectId() { return projectId; }
     public void setProjectId(int projectId) { this.projectId = projectId; }
@@ -31,14 +32,14 @@ public class Project {
     public List<Task> getTasks() { return tasks; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
 
-    public LocalDate getCreatedIn() { return createdIn; }
-    public void setCreatedIn(LocalDate createdIn) { this.createdIn = createdIn; }
+    public Instant getCreatedIn() { return createdIn; }
+    public void setCreatedIn(Instant createdIn) { this.createdIn = createdIn; }
 
-    public LocalDate getUpdatedIn() { return updatedIn;}
-    public void setUpdatedIn(LocalDate updatedIn) { this.updatedIn = updatedIn; }
+    public Instant getUpdatedIn() { return updatedIn;}
+    public void setUpdatedIn(Instant updatedIn) { this.updatedIn = updatedIn; }
 
-    public LocalDate getDeactivateIn() { return deactivateIn; }
-    public void setDeactivateIn(LocalDate deactivateIn) { this.deactivateIn = deactivateIn; }
+    public Instant getDisabledIn() { return disabledIn; }
+    public void setDisabledIn(Instant disabledIn) { this.disabledIn = disabledIn; }
 
     public User getCreatedBy() { return createdBy; }
     public void setCreatedBy(User createdBy) { this.createdBy = createdBy; }
@@ -46,6 +47,18 @@ public class Project {
     public User getUpdatedBy() { return updatedBy; }
     public void setUpdatedBy(User updatedBy) { this.updatedBy = updatedBy; }
 
-    public User getDeactivateBy() { return deactivateBy; }
-    public void setDeactivateBy(User deactivateBy) { this.deactivateBy = deactivateBy; }
+    public User getDisabledBy() { return disabledBy; }
+    public void setDisabledBy(User disabledBy) { this.disabledBy = disabledBy; }
+
+    public String getActivationDescription() {
+        if(isActive()){
+            return "Activated";
+        }
+        return "Deactivated";
+    }
+
+    public String getFormatedCreatedIn(){
+        DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
+        return DATE_TIME_FORMATTER.format(createdIn);
+    }
 }

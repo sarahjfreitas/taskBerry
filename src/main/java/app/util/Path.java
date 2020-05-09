@@ -1,21 +1,14 @@
 package app.util;
 
-        import lombok.*;
+import lombok.*;
 
 public class Path {
-    // The @Getter methods are needed in order to access
-    // the variables from Velocity Templates
-    public static class Web {
-        @Getter public static final String INDEX = "/";
-        @Getter public static final String LOGIN = "/login/";
-        @Getter public static final String LOGOUT = "/logout/";
-        @Getter public static final String TASKS = "/task/";
-        @Getter public static final String TASK = "/task/:id/";
-    }
-
     // Views paths
     public static class Template {
-        public final static String INDEX = "/views/index/index.vm";
         public static final String NOT_FOUND = "/views/notFound.vm";
+        public final static String INDEX = "/views/index/index.vm";
+        public final static String PROJECTS = "/views/project/index.vm";
+        public final static String PROJECT_ADD = "/views/project/new.vm";
+        public final static String PROJECT_EDIT = "/views/project/edit.vm";
     }
 }

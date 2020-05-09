@@ -1,0 +1,38 @@
+#parse("/views/layout.vm")
+#@mainLayout()
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Projects</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a type="button" class="btn btn-outline-primary" href="/projects/new/">
+            <i class="fa-fa-plus"></i> New
+        </a>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Created In</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+<tbody>
+    #foreach($project in $projects)
+    <tr>
+        <td>$project.getProjectId()</td>
+        <td>$project.getName()</td>
+        <td>$project.getActivationDescription()</td>
+        <td>$project.getFormatedCreatedIn()</td>
+        <td>
+            #if($project.isActive())
+                <a class="btn btn-outline-dark" href="/projects/edit/$project.getProjectId()/"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-outline-dark" href="/projects/delete/$project.getProjectId()/"><i class="fas fa-trash"></i></a>
+            #end
+        </td>
+    </tr>
+    </tbody>
+    #end
+</table>
+#end
