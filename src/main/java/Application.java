@@ -1,6 +1,7 @@
 import static spark.debug.DebugScreen.*;
 import static spark.Spark.*;
 
+import app.comment.CommentController;
 import app.index.IndexController;
 import app.project.ProjectController;
 import app.task.TaskController;
@@ -34,6 +35,9 @@ public class Application {
         post("/tasks/",TaskController.create);
         post("/tasks/edit/:id/", TaskController.update);
         get("/tasks/delete/:id/", TaskController.delete);
+        get("/tasks/view/:id/", TaskController.view);
+
+        post("/comments/", CommentController.create);
 
         get("*", IndexController.index);
         

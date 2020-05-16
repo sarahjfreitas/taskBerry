@@ -17,7 +17,6 @@ public class Task extends AppModel {
     private Status currentStatus;
     private User responsible;
     private List<Comment> comments;
-    private Instant updatedIn;
     private Project project;
 
     public int getTaskId() { return taskId; }
@@ -37,9 +36,6 @@ public class Task extends AppModel {
 
     public List<Comment> getComments() { return comments; }
     public void setComments(List<Comment> comments) { this.comments = comments; }
-
-    public Instant getUpdatedIn() { return updatedIn; }
-    public void setUpdatedIn(Instant updated_in) {this.updatedIn = updated_in; }
 
     public Project getProject() { return project; }
     public void setProject(Project project) { this.project = project; }

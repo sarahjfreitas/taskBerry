@@ -13,10 +13,7 @@ public class Project extends AppModel {
     private String name;
     private boolean active;
     private List<Task> tasks;
-    private Instant updatedIn;
     private Instant disabledIn;
-    private User createdBy;
-    private User updatedBy;
     private User disabledBy;
 
     public int getProjectId() { return projectId; }
@@ -32,17 +29,8 @@ public class Project extends AppModel {
     public List<Task> getTasks() { return tasks; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
 
-    public Instant getUpdatedIn() { return updatedIn;}
-    public void setUpdatedIn(Instant updatedIn) { this.updatedIn = updatedIn; }
-
     public Instant getDisabledIn() { return disabledIn; }
     public void setDisabledIn(Instant disabledIn) { this.disabledIn = disabledIn; }
-
-    public User getCreatedBy() { return createdBy; }
-    public void setCreatedBy(User createdBy) { this.createdBy = createdBy; }
-
-    public User getUpdatedBy() { return updatedBy; }
-    public void setUpdatedBy(User updatedBy) { this.updatedBy = updatedBy; }
 
     public User getDisabledBy() { return disabledBy; }
     public void setDisabledBy(User disabledBy) { this.disabledBy = disabledBy; }

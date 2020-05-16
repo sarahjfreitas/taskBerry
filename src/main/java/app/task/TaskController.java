@@ -1,6 +1,7 @@
 package app.task;
 
 import app.AppController;
+import app.comment.CommentDao;
 import app.project.Project;
 import app.project.ProjectDao;
 import app.user.User;
@@ -83,5 +84,14 @@ public class TaskController extends AppController {
         response.redirect("/tasks/");
 
         return null;
+    };
+
+    public static Route view = (Request request, Response response) -> {
+        Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
+        Map<String, Object> model = new HashMap<>();
+        task.setComments(CommentDao.findByTask(task.getTaskId()));
+        model.put("task", task);
+
+        return ViewUtil.render(request, model, Path.Template.TASK_VIEW);
     };
 }

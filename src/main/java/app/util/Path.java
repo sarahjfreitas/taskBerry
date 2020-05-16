@@ -13,5 +13,6 @@ public class Path {
         public final static String TASKS = "/views/task/index.vm";
         public final static String TASK_ADD = "/views/task/new.vm";
         public final static String TASK_EDIT = "/views/task/edit.vm";
+        public final static String TASK_VIEW = "/views/task/view.vm";
     }
 }
