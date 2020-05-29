@@ -12,6 +12,9 @@ public class UserTranslator {
     }
 
     public static User translate(UserData from){
+        if(from == null)
+            return null;
+
         User user = new User();
         user.setUserId(from.userId);
         user.setUsername(from.username);

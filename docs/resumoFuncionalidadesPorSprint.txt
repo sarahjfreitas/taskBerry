@@ -1,10 +1,10 @@
 Sprint 4:
-  - CRUD projetos
-  - CRUD tarefas basico
+  - CRUD projetos - OK
+  - CRUD tarefas basico - OK
 
 Sprint 5: 
-  - CRUD Comentarios 
-  - CRUD Usuarios
+  - CRUD Comentarios - OK
+  - CRUD Usuarios - OK
   - Fluxo de troca de status de tarefa
   - Fluxo de troca de responsáveis de tarefa
   - Hierarquia de Comentarios (responder/comentario pai)
