@@ -47,6 +47,7 @@
         <div class="card">
             <div class="card-header"><i class="fas fa-info"></i> Details</div>
             <div class="card-body">
+                <span class="float-right"><button class="btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalChangeWorkflow"><i class="fa fa-pencil"></i></button></span>
                 <p class="card-text"><strong><i class="fas fa-project-diagram"></i> Status:
                 </strong>$task.getCurrentStatus().name()</p>
                 <p class="card-text"><strong><i class="fas fa-user-tag"></i> Responsible :
@@ -70,6 +71,43 @@
                 </div>
                 <div class="modal-body">
                     <textarea type="text" class="form-control form-control-lg" name="description">$task.getDescription()</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modalChangeWorkflow">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/tasks/workflow/$task.getTaskId()/" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Workflow</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="name">Status:</label>
+                    <select class="form-control form-control-lg" name="currentStatus" value="$task.getCurrentStatus().name()">
+                        #foreach($status in $statuses)
+                            <option value="$status.name()">$status.name()</option>
+                        #end
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="name">Responsible:</label>
+                    <select class="form-control form-control-lg"
+                            name="responsible" value="$task.getResponsible().getUserId()">
+                        #foreach($user in $users)
+                            <option value="$user.getUserId()">$user.getName()</option>
+                        #end
+                    </select>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>

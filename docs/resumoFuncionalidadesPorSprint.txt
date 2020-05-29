@@ -5,10 +5,10 @@ Sprint 4:
 Sprint 5: 
   - CRUD Comentarios - OK
   - CRUD Usuarios - OK
-  - Fluxo de troca de status de tarefa
-  - Fluxo de troca de responsáveis de tarefa
+  - Fluxo de troca de status de tarefa - ok
+  - Fluxo de troca de responsáveis de tarefa - ok
   - Hierarquia de Comentarios (responder/comentario pai)
-  - Editar descrição de tarefa diferetamente na tela de detalhes (view)
+  - Editar descrição de tarefa diferetamente na tela de detalhes (view) - ok
 
 Sprint 6:
   - Histórico de mudanças de status de tarefa

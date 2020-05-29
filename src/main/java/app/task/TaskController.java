@@ -90,6 +90,17 @@ public class TaskController extends AppController {
         return dataToJson(task);
     };
 
+    public static Route updateWorkflow = (Request request, Response response) -> {
+        TaskData task = TaskTranslator.translate(TaskDao.find(Integer.parseInt(request.params(":id"))));
+        task.responsible = Integer.parseInt(request.queryParams("responsible"));
+        task.updatedIn = Instant.now().getEpochSecond();
+        task.currentStatus = request.queryParams("currentStatus");
+        TaskDao.update(task);
+        response.redirect("/tasks/view/"+task.taskId);
+
+        return dataToJson(task);
+    };
+
 
     public static Route delete = (Request request, Response response) -> {
         TaskDao.delete(Integer.parseInt(request.params(":id")));
@@ -100,9 +111,13 @@ public class TaskController extends AppController {
 
     public static Route view = (Request request, Response response) -> {
         Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
+        EnumSet statuses = EnumSet.allOf(Status.class);
+        List<User> users = UserTranslator.translate(UserDao.findAll());
         Map<String, Object> model = new HashMap<>();
         task.setComments(CommentDao.findByTask(task.getTaskId()));
         model.put("task", task);
+        model.put("users", users);
+        model.put("statuses", statuses);
 
         return ViewUtil.render(request, model, Path.Template.TASK_VIEW);
     };
