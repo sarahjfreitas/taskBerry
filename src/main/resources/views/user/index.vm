@@ -1,0 +1,42 @@
+#parse("/views/layout.vm")
+#@mainLayout()
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Users</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a type="button" class="btn btn-outline-primary" href="/users/new/">
+            <i class="fa-fa-plus"></i> New
+        </a>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Created In</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+<tbody>
+    #foreach($user in $users)
+    <tr>
+        <td>$user.getUserId()</td>
+        <td>$user.getUsername()</td>
+        <td>$user.getName()</td>
+        <td>$user.getEmail()</td>
+        <td>$user.getActivationDescription()</td>
+        <td>$user.getFormattedCreatedIn()</td>
+        <td>
+            #if($user.isActive())
+                <a class="btn btn-outline-dark" href="/users/edit/$user.getUserId()/"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-outline-dark" href="/users/delete/$user.getUserId()/"><i class="fas fa-trash"></i></a>
+            #end
+        </td>
+    </tr>
+    </tbody>
+    #end
+</table>
+#end

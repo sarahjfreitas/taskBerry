@@ -7,11 +7,8 @@ create table users
     password   TEXT NOT NULL,
     active     INTEGER,
     createdIn  INT  NOT NULL,
-    createdBy  INT  NOT NULL,
     updatedIn  INT  NULL,
-    updatedBy  INT  NULL,
-    disabledIn INT  NULL,
-    disabledBy INT  NULL
+    disabledIn INT  NULL
 );
 
 insert into migrations (dbVersion) values (2);

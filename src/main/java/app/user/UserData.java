@@ -7,10 +7,7 @@ public class UserData {
     public String name;
     public String password;
     public int active;
-    public int createdIn;
-    public int createdBy;
-    public int updatedIn;
-    public int updatedBy;
-    public int disabledIn;
-    public int disabledBy;
+    public long createdIn;
+    public long updatedIn;
+    public long disabledIn;
 }

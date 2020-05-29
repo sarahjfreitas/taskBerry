@@ -6,6 +6,7 @@ import app.project.Project;
 import app.project.ProjectDao;
 import app.user.User;
 import app.user.UserDao;
+import app.user.UserTranslator;
 import app.util.Path;
 import app.util.ViewUtil;
 import spark.Request;
@@ -31,7 +32,7 @@ public class TaskController extends AppController {
     public static Route add = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
         List<Project> projects = ProjectDao.findAll();
-        List<User> users = UserDao.findAll();
+        List<User> users = UserTranslator.translate(UserDao.findAll());
         model.put("projects", projects);
         model.put("users", users);
 
@@ -57,7 +58,7 @@ public class TaskController extends AppController {
         Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
         Map<String, Object> model = new HashMap<>();
         EnumSet statuses = EnumSet.allOf(Status.class);
-        List<User> users = UserDao.findAll();
+        List<User> users = UserTranslator.translate(UserDao.findAll());
 
         model.put("users", users);
         model.put("task", task);

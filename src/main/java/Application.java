@@ -5,6 +5,7 @@ import app.comment.CommentController;
 import app.index.IndexController;
 import app.project.ProjectController;
 import app.task.TaskController;
+import app.user.UserController;
 import app.util.*;
 
 public class Application {
@@ -36,8 +37,14 @@ public class Application {
         post("/tasks/edit/:id/", TaskController.update);
         get("/tasks/delete/:id/", TaskController.delete);
         get("/tasks/view/:id/", TaskController.view);
-
         post("/comments/", CommentController.create);
+
+        get("/users/", UserController.index);
+        get("/users/new/", UserController.add);
+        get("/users/edit/:id/", UserController.edit);
+        post("/users/",UserController.create);
+        post("/users/edit/:id/", UserController.update);
+        get("/users/delete/:id/", UserController.delete);
 
         get("*", IndexController.index);
         

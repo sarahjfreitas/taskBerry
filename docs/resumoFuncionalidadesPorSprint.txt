@@ -1,0 +1,24 @@
+Sprint 4:
+  - CRUD projetos
+  - CRUD tarefas basico
+
+Sprint 5: 
+  - CRUD Comentarios 
+  - CRUD Usuarios
+  - Fluxo de troca de status de tarefa
+  - Fluxo de troca de responsáveis de tarefa
+  - Hierarquia de Comentarios (responder/comentario pai)
+  - Editar descrição de tarefa diferetamente na tela de detalhes (view)
+
+Sprint 6:
+  - Histórico de mudanças de status de tarefa
+  - Histórico de mudanças de responsavel de tarefa
+  - Dashbaord contendo resumo de tarefas pendentes para o usuario
+  - Melhoria nos grids/listagems - ordenação e filtros
+
+Extras (se tiver tempo)
+  - Autenticação (login/logout)
+  - Anexo de imagens e documentos na tarefa
+  - Texto formatável na descrição e comentários da tarefa
+  - Refatoração e otimização
+  - Deploy para um servidor
