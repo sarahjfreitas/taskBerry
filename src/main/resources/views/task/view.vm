@@ -1,15 +1,16 @@
 #parse("/views/layout.vm")
+#parse("/views/task/comment.vm")
 #@mainLayout()
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">$task.getName()</h1>
 </div>
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-header"><i class="fas fa-file-alt"></i> Description</div>
             <div class="card-body">
                 <span class="float-right"><button class="btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalEditDescription"><i class="fa fa-pencil"></i></button></span>
-                <p class="card-text">$task.getDescription()</p>
+                <pre class="card-text">$task.getDescription()</pre>
             </div>
         </div>
         <form action="/comments/" method="post">
@@ -30,20 +31,12 @@
             <div class="card-header"><i class="fas fa-comments"></i> Comments</div>
             <div class="card-body">
                 #foreach($comment in $task.getComments())
-                    <div class="list-group">
-                        <li class="list-group-item">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1"><i class="fas fa-user-circle"></i> $comment.getCreatedBy().getName()</h5>
-                                <small>$comment.getFormattedCreatedIn()</small>
-                            </div>
-                            <p class="mb-1">$comment.getContent()</p>
-                        </li>
-                    </div>
+                    #commentBlock($comment)
                 #end
             </div>
         </div>
     </div>
-    <div class="col md-3">
+    <div class="col md-4">
         <div class="card">
             <div class="card-header"><i class="fas fa-info"></i> Details</div>
             <div class="card-body">

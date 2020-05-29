@@ -21,8 +21,16 @@ public class CommentDao {
 
     public static List<Comment> findByTask(int taskId) {
         try (Connection conn = TaskBerryConnection.get().open()) {
-            List<CommentData> comments = conn.createQuery("select * from comments where taskId = :taskId order by commentId DESC")
+            List<CommentData> comments = conn.createQuery("select * from comments where taskId = :taskId and parentId is NULL order by commentId DESC")
                     .addParameter("taskId",taskId).executeAndFetch(CommentData.class);
+            return CommentTranslator.translate(comments);
+        }
+    }
+
+    public static List<Comment> findChildren(int commentId) {
+        try (Connection conn = TaskBerryConnection.get().open()) {
+            List<CommentData> comments = conn.createQuery("select * from comments where parentId = :parentId order by commentId DESC")
+                    .addParameter("parentId",commentId).executeAndFetch(CommentData.class);
             return CommentTranslator.translate(comments);
         }
     }

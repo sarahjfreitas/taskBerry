@@ -7,4 +7,5 @@ public class CommentData {
     public long createdIn;
     public long updatedIn;
     public int taskId;
+    public int parentId;
 }

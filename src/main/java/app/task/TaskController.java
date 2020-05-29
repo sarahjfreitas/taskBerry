@@ -32,7 +32,7 @@ public class TaskController extends AppController {
     public static Route add = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
         List<Project> projects = ProjectDao.findAll();
-        List<User> users = UserTranslator.translate(UserDao.findAll());
+        List<User> users = UserTranslator.translate(UserDao.findActives());
         model.put("projects", projects);
         model.put("users", users);
 
@@ -58,7 +58,7 @@ public class TaskController extends AppController {
         Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
         Map<String, Object> model = new HashMap<>();
         EnumSet statuses = EnumSet.allOf(Status.class);
-        List<User> users = UserTranslator.translate(UserDao.findAll());
+        List<User> users = UserTranslator.translate(UserDao.findActives());
 
         model.put("users", users);
         model.put("task", task);
@@ -112,7 +112,7 @@ public class TaskController extends AppController {
     public static Route view = (Request request, Response response) -> {
         Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
         EnumSet statuses = EnumSet.allOf(Status.class);
-        List<User> users = UserTranslator.translate(UserDao.findAll());
+        List<User> users = UserTranslator.translate(UserDao.findActives());
         Map<String, Object> model = new HashMap<>();
         task.setComments(CommentDao.findByTask(task.getTaskId()));
         model.put("task", task);

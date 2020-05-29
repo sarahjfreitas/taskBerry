@@ -25,6 +25,9 @@ public class CommentTranslator {
         comment.setUpdatedIn(Instant.ofEpochSecond(from.updatedIn));
         comment.setCreatedBy(UserDao.find(from.createdBy));
 
+        List<Comment> children = CommentDao.findChildren(from.commentId);
+        comment.setChildren(children);
+
         return comment;
     }
 }

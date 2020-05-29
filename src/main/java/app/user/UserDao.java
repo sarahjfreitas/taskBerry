@@ -35,6 +35,14 @@ public class UserDao {
         }
     }
 
+    public static List<UserData> findActives() {
+        try (Connection conn = TaskBerryConnection.get().open()) {
+            List<UserData> users = conn.createQuery("select * from users where active = 1")
+                    .executeAndFetch(UserData.class);
+            return users;
+        }
+    }
+
     public static void create(UserData user) {
         try (Connection conn = TaskBerryConnection.get().open()) {
             String sql = "insert into users(name, username, email, password, active, createdIn)";
