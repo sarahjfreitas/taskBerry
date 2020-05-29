@@ -35,6 +35,7 @@ public class Application {
         get("/tasks/edit/:id/", TaskController.edit);
         post("/tasks/",TaskController.create);
         post("/tasks/edit/:id/", TaskController.update);
+        post("/tasks/description/:id/", TaskController.updateDescription);
         get("/tasks/delete/:id/", TaskController.delete);
         get("/tasks/view/:id/", TaskController.view);
         post("/comments/", CommentController.create);

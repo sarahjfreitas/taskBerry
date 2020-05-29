@@ -80,6 +80,17 @@ public class TaskController extends AppController {
         return dataToJson(task);
     };
 
+    public static Route updateDescription = (Request request, Response response) -> {
+        TaskData task = TaskTranslator.translate(TaskDao.find(Integer.parseInt(request.params(":id"))));
+        task.description = request.queryParams("description");
+        task.updatedIn = Instant.now().getEpochSecond();
+        TaskDao.update(task);
+        response.redirect("/tasks/view/"+task.taskId);
+
+        return dataToJson(task);
+    };
+
+
     public static Route delete = (Request request, Response response) -> {
         TaskDao.delete(Integer.parseInt(request.params(":id")));
         response.redirect("/tasks/");
