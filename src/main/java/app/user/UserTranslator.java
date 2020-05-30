@@ -36,7 +36,7 @@ public class UserTranslator {
     public static UserData translate(User from) {
         UserData user = new UserData();
         user.userId = from.getUserId();
-        user.name = from.getUsername();
+        user.name = from.getName();
         user.username = from.getUsername();
         user.email = from.getEmail();
         user.password = from.getPassword();
