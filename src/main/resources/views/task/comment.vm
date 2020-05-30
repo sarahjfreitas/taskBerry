@@ -7,7 +7,7 @@
             <h5 class="mb-1"><i class="fas fa-user-circle"></i> $comment.getCreatedBy().getName()</h5>
             <small>
                 $comment.getFormattedCreatedIn()
-                <button class="btn btn-outline-dark btn-sm" type="button" data-toggle="modal" data-target="#modalEditDescription"><i class="fa fa-reply"></i></button>
+                <button class="btn btn-outline-dark btn-sm" type="button"><i class="fa fa-reply"></i></button>
             </small>
         </div>        
         <p class="mb-1">$comment.getContent()</p>
