@@ -113,7 +113,7 @@
 <script>
     $( document ).ready(function() {
         $('select[name="responsible"]').val($task.getResponsible().getUserId());
-        $('select[name="currentStatus"]').val($task.getCurrentStatus().name());
+        $('select[name="currentStatus"]').val('$task.getCurrentStatus().name()');
     });
 </script>
 #end

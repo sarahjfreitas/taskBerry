@@ -67,4 +67,16 @@ public class TaskDao {
             return TaskTranslator.translate(tasks);
         }
     }
+
+    public static List<Task> findByUserAndStatus(int userId,String currentStatus) {
+        try (Connection conn = TaskBerryConnection.get().open()) {
+            String sql = "select * from tasks where responsible = :userId and currentStatus = :currentStatus";
+            List<TaskData> tasks = conn.createQuery(sql)
+                    .addParameter("userId",userId)
+                    .addParameter("currentStatus",currentStatus)
+                    .executeAndFetch(TaskData.class);
+
+            return TaskTranslator.translate(tasks);
+        }
+    }
 }

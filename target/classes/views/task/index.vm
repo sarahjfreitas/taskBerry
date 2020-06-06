@@ -1,4 +1,5 @@
 #parse("/views/layout.vm")
+#parse("/views/task/list.vm")
 #@mainLayout()
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Tasks</h1>
@@ -8,34 +9,5 @@
         </a>
     </div>
 </div>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Project</th>
-        <th>Responsible</th>
-        <th>Created In</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-<tbody>
-    #foreach($task in $tasks)
-    <tr>
-        <td>$task.getTaskId()</td>
-        <td>$task.getName()</td>
-        <td>$task.getCurrentStatus().name()</td>
-        <td>$task.getProject().getName()</td>
-        <td>$task.getResponsible().getName()</td>
-        <td>$task.getFormattedCreatedIn()</td>
-        <td>
-            <a class="btn btn-outline-dark" href="/tasks/edit/$task.getTaskId()/"><i class="fas fa-edit"></i></a>
-            <a class="btn btn-outline-dark" href="/tasks/delete/$task.getTaskId()/"><i class="fas fa-trash"></i></a>
-            <a class="btn btn-outline-dark" href="/tasks/view/$task.getTaskId()/"><i class="fas fa-file-alt"></i></a>
-        </td>
-    </tr>
-    </tbody>
-    #end
-</table>
+#taskList($tasks)
 #end

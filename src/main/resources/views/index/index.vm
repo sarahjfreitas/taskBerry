@@ -1,16 +1,28 @@
 #parse("/views/layout.vm")
+#parse("/views/task/list.vm")
+
 #@mainLayout()
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Dashboard</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group mr-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-        </div>
-        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-        </button>
-    </div>
+    <h1 class="h2">Dashboard - My Tasks</h1>
+</div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
+           aria-selected="true">Pending</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="progress-tab" data-toggle="tab" href="#progress" role="tab" aria-controls="progress"
+           aria-selected="false">In Progress</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="testing-tab" data-toggle="tab" href="#testing" role="tab" aria-controls="testing"
+           aria-selected="false">Ready to Test</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">#taskList($pendingTasks)</div>
+    <div class="tab-pane fade show" id="progress" role="tabpanel" aria-labelledby="progress-tab">#taskList($progressTasks)</div>
+    <div class="tab-pane fade show" id="testing" role="tabpanel" aria-labelledby="testing-tab">#taskList($testingTasks)</div>
 </div>
 #end

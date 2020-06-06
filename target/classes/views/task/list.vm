@@ -1,0 +1,31 @@
+#macro(taskList $tasks)
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Project</th>
+        <th>Responsible</th>
+        <th>Created In</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+<tbody>
+    #foreach($task in $tasks)
+    <tr>
+        <td>$task.getTaskId()</td>
+        <td>$task.getName()</td>
+        <td>$task.getCurrentStatus().name()</td>
+        <td>$task.getProject().getName()</td>
+        <td>$task.getResponsible().getName()</td>
+        <td>$task.getFormattedCreatedIn()</td>
+        <td>
+            <a class="btn btn-outline-dark" href="/tasks/delete/$task.getTaskId()/"><i class="fas fa-trash"></i></a>
+            <a class="btn btn-outline-dark" href="/tasks/view/$task.getTaskId()/"><i class="fas fa-file-alt"></i></a>
+        </td>
+    </tr>
+    </tbody>
+    #end
+</table>
+#end
