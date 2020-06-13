@@ -2,6 +2,11 @@ package app.task;
 
 import app.AppController;
 import app.comment.CommentDao;
+import app.history.History;
+import app.history.HistoryDao;
+import app.history.HistoryData;
+import app.history.HistoryTranslator;
+import app.login.LoginController;
 import app.project.Project;
 import app.project.ProjectDao;
 import app.user.User;
@@ -92,12 +97,25 @@ public class TaskController extends AppController {
 
     public static Route updateWorkflow = (Request request, Response response) -> {
         TaskData task = TaskTranslator.translate(TaskDao.find(Integer.parseInt(request.params(":id"))));
+
+        HistoryData historyData = new HistoryData();
+        historyData.taskId = task.taskId;
+        historyData.oldStatus = task.currentStatus;
+        historyData.oldResponsible = task.responsible;
+        historyData.createdIn = Instant.now().getEpochSecond();
+        historyData.createdBy = LoginController.getUser().getUserId();
+        historyData.description = request.queryParams("description");
+
         task.responsible = Integer.parseInt(request.queryParams("responsible"));
         task.updatedIn = Instant.now().getEpochSecond();
         task.currentStatus = request.queryParams("currentStatus");
         TaskDao.update(task);
-        response.redirect("/tasks/view/"+task.taskId);
 
+        historyData.newStatus = task.currentStatus;
+        historyData.newResponsible = task.responsible;
+        HistoryDao.create(historyData);
+
+        response.redirect("/tasks/view/"+task.taskId);
         return dataToJson(task);
     };
 
@@ -113,11 +131,13 @@ public class TaskController extends AppController {
         Task task = TaskDao.find(Integer.parseInt(request.params(":id")));
         EnumSet statuses = EnumSet.allOf(Status.class);
         List<User> users = UserTranslator.translate(UserDao.findActives());
+        List<History> histories = HistoryDao.findByTask(task.getTaskId());
         Map<String, Object> model = new HashMap<>();
         task.setComments(CommentDao.findByTask(task.getTaskId()));
         model.put("task", task);
         model.put("users", users);
         model.put("statuses", statuses);
+        model.put("histories", histories);
 
         return ViewUtil.render(request, model, Path.Template.TASK_VIEW);
     };

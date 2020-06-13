@@ -1,9 +1,6 @@
 package app.task;
 
 import app.TaskBerryConnection;
-import app.project.Project;
-import app.project.ProjectData;
-import app.project.ProjectTranslator;
 import org.sql2o.Connection;
 
 import java.util.List;

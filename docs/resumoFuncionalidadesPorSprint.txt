@@ -12,7 +12,7 @@ Sprint 5:
 Sprint 6:
   - Histórico de mudanças de status de tarefa
   - Histórico de mudanças de responsavel de tarefa
-  - Dashbaord contendo resumo de tarefas pendentes para o usuario
+  - Dashbaord contendo resumo de tarefas pendentes para o usuario - ok
   - Melhoria nos grids/listagems - ordenação e filtros
   - Hierarquia de Comentarios (responder/comentario pai)
 Extras (se tiver tempo)
