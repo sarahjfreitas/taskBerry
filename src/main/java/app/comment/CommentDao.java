@@ -1,11 +1,12 @@
 package app.comment;
 
+import app.AppDao;
 import app.TaskBerryConnection;
 import org.sql2o.Connection;
 
 import java.util.List;
 
-public class CommentDao {
+public class CommentDao extends AppDao {
     public static void create(CommentData comment) {
         try (Connection conn = TaskBerryConnection.get().open()) {
             String sql = "insert into comments(content, createdIn, createdBy, taskId)";

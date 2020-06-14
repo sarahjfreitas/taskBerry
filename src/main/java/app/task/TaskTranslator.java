@@ -1,14 +1,13 @@
 package app.task;
 
-import app.project.Project;
+import app.AppTranslator;
 import app.project.ProjectDao;
 import app.user.UserDao;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskTranslator {
+public class TaskTranslator extends AppTranslator {
     public static Task translate(TaskData from){
         Task task = new Task();
         task.setTaskId(from.taskId);

@@ -1,20 +1,11 @@
 package app.user;
 
 import app.TaskBerryConnection;
-import app.project.Project;
-import app.project.ProjectData;
-import app.project.ProjectTranslator;
-import app.task.TaskData;
-import app.task.TaskTranslator;
 import org.sql2o.Connection;
-import org.sql2o.Sql2o;
-
-import java.util.ArrayList;
+import app.AppDao;
 import java.util.List;
 
-public class UserDao {
-    private Sql2o sql2o;
-
+public class UserDao extends AppDao {
     public static UserData findData(int userId){
         try (Connection conn = TaskBerryConnection.get().open()) {
             UserData user = conn.createQuery("select * from users where userId = :userId")

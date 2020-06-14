@@ -1,5 +1,6 @@
 package app.index;
 
+import app.AppController;
 import app.login.LoginController;
         import app.task.Status;
         import app.task.Task;
@@ -9,7 +10,7 @@ import app.login.LoginController;
         import spark.*;
         import java.util.*;
 
-public class IndexController {
+public class IndexController extends AppController {
     public static Route index = (Request request, Response response) -> {
         User user = LoginController.getUser();
         List<Task> pendingTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.PENDING.name());

@@ -1,5 +1,6 @@
 package app.comment;
 
+import app.AppTranslator;
 import app.project.Project;
 import app.project.ProjectData;
 import app.project.ProjectTranslator;
@@ -9,7 +10,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentTranslator {
+public class CommentTranslator extends AppTranslator {
     public static List<Comment> translate(List<CommentData> from) {
         List<Comment> comments = new ArrayList<Comment>();
         from.forEach(c -> comments.add(CommentTranslator.translate(c)));

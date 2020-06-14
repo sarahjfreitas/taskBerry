@@ -4,11 +4,12 @@ import app.TaskBerryConnection;
 import app.task.Task;
 import app.task.TaskData;
 import app.task.TaskTranslator;
+import app.AppDao;
 import org.sql2o.Connection;
 
 import java.util.List;
 
-public class HistoryDao {
+public class HistoryDao extends AppDao {
     public static void create(HistoryData history) {
         try (Connection conn = TaskBerryConnection.get().open()) {
             String sql = "insert into history(taskId, oldStatus, newStatus, oldResponsible, newResponsible, createdIn,createdBy,description)";

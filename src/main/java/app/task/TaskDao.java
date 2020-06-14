@@ -1,11 +1,11 @@
 package app.task;
 
 import app.TaskBerryConnection;
+import app.AppDao;
 import org.sql2o.Connection;
-
 import java.util.List;
 
-public class TaskDao {
+public class TaskDao extends AppDao {
     public static void create(TaskData task) {
         try (Connection conn = TaskBerryConnection.get().open()) {
             String sql = "insert into tasks(name, description, currentStatus, responsible, createdIn, projectId)";

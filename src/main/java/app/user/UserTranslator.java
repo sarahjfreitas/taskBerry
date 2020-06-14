@@ -1,10 +1,11 @@
 package app.user;
 
+import app.AppTranslator;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserTranslator {
+public class UserTranslator extends AppTranslator {
     public static List<User> translate(List<UserData> from) {
         List<User> users = new ArrayList<User>();
         from.forEach(userData -> users.add(translate(userData)));

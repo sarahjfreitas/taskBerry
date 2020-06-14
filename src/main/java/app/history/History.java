@@ -13,8 +13,6 @@ public class History extends AppModel {
     private Status newStatus;
     private User oldResponsible;
     private User newResponsible;
-    private Instant createdIn;
-    private User createdBy;
     private String description;
 
     public int getHistoryId() {

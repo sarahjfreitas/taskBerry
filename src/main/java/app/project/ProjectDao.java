@@ -1,12 +1,11 @@
 package app.project;
 
-
 import app.TaskBerryConnection;
+import app.AppDao;
 import org.sql2o.Connection;
-
 import java.util.List;
 
-public class ProjectDao {
+public class ProjectDao extends AppDao {
 
     public static void create(ProjectData project) {
         try (Connection conn = TaskBerryConnection.get().open()) {

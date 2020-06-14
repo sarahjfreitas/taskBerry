@@ -1,14 +1,13 @@
 package app.history;
 
+import app.AppTranslator;
 import app.task.Status;
-import app.task.Task;
 import app.user.UserDao;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryTranslator {
+public class HistoryTranslator extends AppTranslator {
     public static List<History> translate(List<HistoryData> from) {
         List<History> histories = new ArrayList<History>();
         from.forEach(f -> histories.add(translate(f)));

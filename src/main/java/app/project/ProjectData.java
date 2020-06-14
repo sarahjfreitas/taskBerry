@@ -1,10 +1,11 @@
 package app.project;
 
-public class ProjectData {
+import app.AppData;
+
+public class ProjectData extends AppData {
     public int projectId;
     public String name;
     public int active;
-    public long createdIn;
     public int createdBy;
     public long updatedIn;
     public int updatedBy;

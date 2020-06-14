@@ -1,13 +1,12 @@
 package app.project;
 
-import app.user.User;
+import app.AppTranslator;
 import app.user.UserDao;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectTranslator {
+public class ProjectTranslator extends AppTranslator {
     public static Project translate(ProjectData from){
         Project project = new Project();
         project.setProjectId(from.projectId);
