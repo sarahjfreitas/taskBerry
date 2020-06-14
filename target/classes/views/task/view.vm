@@ -62,29 +62,31 @@
                 #end
             </div>
             <div class="tab-pane fade show" id="history" role="tabpanel" aria-labelledby="history-tab">
-                <table class="table table-striped">
+                <table class="table table-striped" data-toggle="table" data-search="true" data-show-columns="true">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Old Status</th>
-                        <th>New Status</th>
-                        <th>Old Responsible</th>
-                        <th>New Responsible</th>
-                        <th>Created In</th>
+                        <th data-sortable="true">#</th>
+                        <th data-sortable="true">Old Status</th>
+                        <th data-sortable="true">New Status</th>
+                        <th data-sortable="true">Old Responsible</th>
+                        <th data-sortable="true">New Responsible</th>
+                        <th data-sortable="true">Description</th>
+                        <th data-sortable="true">Created In</th>
                     </tr>
                     </thead>
-                <tbody>
+                    <tbody>
                     #foreach($history in $histories)
-                    <tr>
-                        <td>$history.getHistoryId()</td>
-                        <td>$history.getOldStatus().name()</td>
-                        <td>$history.getNewStatus().name()</td>
-                        <td>$history.getOldResponsible().getName()</td>
-                        <td>$history.getNewResponsible().getName()</td>
-                        <td>$history.getFormattedCreatedIn()</td>
-                    </tr>
-                    </tbody>
+                        <tr>
+                            <td>$history.getHistoryId()</td>
+                            <td>$history.getOldStatus().name()</td>
+                            <td>$history.getNewStatus().name()</td>
+                            <td>$history.getOldResponsible().getName()</td>
+                            <td>$history.getNewResponsible().getName()</td>
+                            <td>$history.getDescription()</td>
+                            <td>$history.getFormattedCreatedIn()</td>
+                        </tr>
                     #end
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -125,7 +127,7 @@
                     </button>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="name">Status:</label>
+                    <label for="currentStatus">Status:</label>
                     <select class="form-control form-control-lg" name="currentStatus">
                         #foreach($status in $statuses)
                             <option value="$status.name()">$status.name()</option>
@@ -133,12 +135,16 @@
                     </select>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="name">Responsible:</label>
+                    <label for="responsible">Responsible:</label>
                     <select class="form-control form-control-lg" name="responsible">
                         #foreach($user in $users)
                             <option value="$user.getUserId()">$user.getName()</option>
                         #end
                     </select>
+                </div>
+                <div class="modal-body">
+                <label for="description">Description:</label>
+                    <textarea type="text" class="form-control form-control-lg" name="description"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>
