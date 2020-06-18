@@ -1,5 +1,10 @@
 #parse("/views/layout.vm")
-#parse("/views/task/comment.vm")
+#parse("/views/task/change_workflow.vm")
+#parse("/views/task/edit_description.vm")
+#parse("/views/task/details_sidebar.vm")
+#parse("/views/task/history.vm")
+#parse("/views/task/issues.vm")
+
 #@mainLayout()
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">$task.getName()</h1>
@@ -13,147 +18,39 @@
                 <pre class="card-text">$task.getDescription()</pre>
             </div>
         </div>
-        <form action="/comments/" method="post">
+        <form action="/issues/" method="post">
             <input type="hidden" value="$task.getTaskId()" name="taskId">
             <div class="card">
-                <div class="card-header"><i class="fas fa-comment-medical"></i> New Comment:</div>
+                <div class="card-header"><i class="fas fa-comment-medical"></i> New Issue:</div>
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea type="text" class="form-control form-control-lg" name="content"></textarea>
+                        <textarea type="text" class="form-control form-control-lg" name="title"></textarea>
                     </div>
                     <div class="float-right">
-                        <button class="btn btn-success"><i class="fa fa-plus"></i> Comment</button>
+                        <button class="btn btn-success"><i class="fa fa-plus"></i> Create</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="col md-4">
-        <div class="card">
-            <div class="card-header"><i class="fas fa-info"></i> Details</div>
-            <div class="card-body">
-                <span class="float-right"><button class="btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalChangeWorkflow"><i class="fa fa-pencil"></i></button></span>
-                <p class="card-text"><strong><i class="fas fa-project-diagram"></i> Status:
-                </strong>$task.getCurrentStatus().name()</p>
-                <p class="card-text"><strong><i class="fas fa-user-tag"></i> Responsible :
-                </strong>$task.getResponsible().getName()</p>
-                <p class="card-text"><strong><i class="fas fa-folder-open"></i> Project :
-                </strong>$task.getProject().getName()</p>
-            </div>
-        </div>
-    </div>
+    #detailsSidebarBlock()
+    
 </div>
 <div class="row">
     <div class="col-md-12">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments"
-                   aria-selected="true"><i class="fas fa-comments"></i> Comments</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history"
-                   aria-selected="false"><i class="fas fa-history"></i> History</a>
-            </li>
+            <li class="nav-item"><a class="nav-link active" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="true"><i class="fas fa-comments"></i> Issues</a></li>
+            <li class="nav-item"><a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fas fa-history"></i> History</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-                #foreach($comment in $task.getComments())
-                    #commentBlock($comment)
-                #end
-            </div>
-            <div class="tab-pane fade show" id="history" role="tabpanel" aria-labelledby="history-tab">
-                <table class="table table-striped" data-toggle="table" data-search="true" data-show-columns="true">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">#</th>
-                        <th data-sortable="true">Old Status</th>
-                        <th data-sortable="true">New Status</th>
-                        <th data-sortable="true">Old Responsible</th>
-                        <th data-sortable="true">New Responsible</th>
-                        <th data-sortable="true">Description</th>
-                        <th data-sortable="true">Created In</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    #foreach($history in $histories)
-                        <tr>
-                            <td>$history.getHistoryId()</td>
-                            <td>$history.getOldStatus().name()</td>
-                            <td>$history.getNewStatus().name()</td>
-                            <td>$history.getOldResponsible().getName()</td>
-                            <td>$history.getNewResponsible().getName()</td>
-                            <td>$history.getDescription()</td>
-                            <td>$history.getFormattedCreatedIn()</td>
-                        </tr>
-                    #end
-                    </tbody>
-                </table>
-            </div>
+            <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">#issuesBlock()</div>            
+            <div class="tab-pane fade show" id="history" role="tabpanel" aria-labelledby="history-tab">#historyBlock()</div>
         </div>
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog" id="modalEditDescription">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <form action="/tasks/description/$task.getTaskId()/" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Description</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <textarea type="text" class="form-control form-control-lg" name="description">$task.getDescription()</textarea>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal" tabindex="-1" role="dialog" id="modalChangeWorkflow">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="/tasks/workflow/$task.getTaskId()/" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Change Workflow</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="currentStatus">Status:</label>
-                    <select class="form-control form-control-lg" name="currentStatus">
-                        #foreach($status in $statuses)
-                            <option value="$status.name()">$status.name()</option>
-                        #end
-                    </select>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="responsible">Responsible:</label>
-                    <select class="form-control form-control-lg" name="responsible">
-                        #foreach($user in $users)
-                            <option value="$user.getUserId()">$user.getName()</option>
-                        #end
-                    </select>
-                </div>
-                <div class="modal-body">
-                <label for="description">Description:</label>
-                    <textarea type="text" class="form-control form-control-lg" name="description"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success"><i class="fa fa-pencil"></i> Update</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+#editDescriptionBlock()
+#changeWorkFlowBlock()
 
 <script>
     $( document ).ready(function() {

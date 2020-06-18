@@ -3,6 +3,7 @@ import static spark.Spark.*;
 
 import app.comment.CommentController;
 import app.index.IndexController;
+import app.issue.IssueController;
 import app.project.ProjectController;
 import app.task.TaskController;
 import app.user.UserController;
@@ -40,6 +41,7 @@ public class Application {
         get("/tasks/delete/:id/", TaskController.delete);
         get("/tasks/view/:id/", TaskController.view);
         post("/comments/", CommentController.create);
+        post("/issues/", IssueController.create);
 
         get("/users/", UserController.index);
         get("/users/new/", UserController.add);

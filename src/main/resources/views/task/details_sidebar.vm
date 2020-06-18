@@ -1,0 +1,16 @@
+#macro(detailsSidebarBlock)
+<div class="col md-4">
+    <div class="card">
+        <div class="card-header"><i class="fas fa-info"></i> Details</div>
+        <div class="card-body">
+            <span class="float-right"><button class="btn btn-outline-dark" type="button" data-toggle="modal" data-target="#modalChangeWorkflow"><i class="fa fa-pencil"></i></button></span>
+            <p class="card-text"><strong><i class="fas fa-project-diagram"></i> Status:
+            </strong>$task.getCurrentStatus().name()</p>
+            <p class="card-text"><strong><i class="fas fa-user-tag"></i> Responsible :
+            </strong>$task.getResponsible().getName()</p>
+            <p class="card-text"><strong><i class="fas fa-folder-open"></i> Project :
+            </strong>$task.getProject().getName()</p>
+        </div>
+    </div>
+</div>
+#end

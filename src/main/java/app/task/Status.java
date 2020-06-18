@@ -1,9 +1,6 @@
 package app.task;
 
-import app.TaskBerryConnection;
-import app.comment.CommentDao;
-
-public enum Status extends TaskBerryConnection {
+public enum Status{
     PENDING,
     WAITING_INPUT,
     IN_PROGRESS,

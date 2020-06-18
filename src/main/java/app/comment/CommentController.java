@@ -2,7 +2,6 @@ package app.comment;
 
 import app.AppController;
 import app.login.LoginController;
-import app.user.UserController;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -17,7 +16,7 @@ public class CommentController extends AppController {
         commentData.content = request.queryParams("content");
         commentData.createdIn = Instant.now().getEpochSecond();
         commentData.createdBy = LoginController.getUser().getUserId();
-        commentData.taskId = Integer.parseInt(request.queryParams("taskId"));
+        commentData.issueId = Integer.parseInt(request.queryParams("issueId"));
         CommentDao.create(commentData);
 
         response.redirect("/tasks/view/"+request.queryParams("taskId")+"/");

@@ -1,17 +1,12 @@
 package app.comment;
 
 import app.AppModel;
-import app.task.Task;
-import app.user.User;
-
-import java.time.LocalDate;
-import java.util.List;
+import app.issue.Issue;
 
 public class Comment extends AppModel {
     private int commentId;
     private String content;
-    private Task task;
-    private List<Comment> children;
+    private Issue issue;
 
     public int getCommentId() {
         return commentId;
@@ -29,19 +24,11 @@ public class Comment extends AppModel {
         this.content = content;
     }
 
-    public Task getTask() {
-        return task;
+    public Issue getIssue() {
+        return issue;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
-    public List<Comment> getChildren(){
-        return children;
-    }
-
-    public void setChildren(List<Comment> children){
-        this.children = children;
+    public void setIssue(Issue issue) {
+        this.issue = issue;
     }
 }

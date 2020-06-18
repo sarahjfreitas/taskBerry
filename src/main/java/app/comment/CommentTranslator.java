@@ -1,11 +1,8 @@
 package app.comment;
 
 import app.AppTranslator;
-import app.project.Project;
-import app.project.ProjectData;
-import app.project.ProjectTranslator;
+import app.issue.IssueDao;
 import app.user.UserDao;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +20,8 @@ public class CommentTranslator extends AppTranslator {
         comment.setCommentId(from.commentId);
         comment.setContent(from.content);
         comment.setCreatedIn(Instant.ofEpochSecond(from.createdIn));
-        comment.setUpdatedIn(Instant.ofEpochSecond(from.updatedIn));
         comment.setCreatedBy(UserDao.find(from.createdBy));
-
-        List<Comment> children = CommentDao.findChildren(from.commentId);
-        comment.setChildren(children);
+        comment.setIssue(IssueDao.find(from.issueId));
 
         return comment;
     }

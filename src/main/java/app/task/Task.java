@@ -1,13 +1,9 @@
 package app.task;
 
 import app.AppModel;
-import app.comment.Comment;
+import app.issue.Issue;
 import app.project.Project;
 import app.user.User;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Task extends AppModel {
@@ -16,7 +12,7 @@ public class Task extends AppModel {
     private String description;
     private Status currentStatus;
     private User responsible;
-    private List<Comment> comments;
+    private List<Issue> issues;
     private Project project;
 
     public int getTaskId() { return taskId; }
@@ -34,8 +30,8 @@ public class Task extends AppModel {
     public User getResponsible() { return responsible; }
     public void setResponsible(User responsible) { this.responsible = responsible; }
 
-    public List<Comment> getComments() { return comments; }
-    public void setComments(List<Comment> comments) { this.comments = comments; }
+    public List<Issue> getIssues() { return issues; }
+    public void setIssues(List<Issue> issues) { this.issues = issues; }
 
     public Project getProject() { return project; }
     public void setProject(Project project) { this.project = project; }

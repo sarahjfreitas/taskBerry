@@ -1,0 +1,28 @@
+#macro(historyBlock)
+<table class="table table-striped" data-toggle="table" data-search="true" data-show-columns="true">
+    <thead>
+    <tr>
+        <th data-sortable="true">#</th>
+        <th data-sortable="true">Old Status</th>
+        <th data-sortable="true">New Status</th>
+        <th data-sortable="true">Old Responsible</th>
+        <th data-sortable="true">New Responsible</th>
+        <th data-sortable="true">Description</th>
+        <th data-sortable="true">Created In</th>
+    </tr>
+    </thead>
+    <tbody>
+    #foreach($history in $histories)
+        <tr>
+            <td>$history.getHistoryId()</td>
+            <td>$history.getOldStatus().name()</td>
+            <td>$history.getNewStatus().name()</td>
+            <td>$history.getOldResponsible().getName()</td>
+            <td>$history.getNewResponsible().getName()</td>
+            <td>$history.getDescription()</td>
+            <td>$history.getFormattedCreatedIn()</td>
+        </tr>
+    #end
+    </tbody>
+</table>
+#end

@@ -1,0 +1,16 @@
+#macro(issuesBlock)
+    #foreach($issue in $task.getIssues())
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fas fa-user-circle"></i> $issue.getCreatedBy().getName()</h5>
+                    <small>
+                        $issue.getFormattedCreatedIn()
+                        <button class="btn btn-outline-dark btn-sm" type="button"><i class="fa fa-open"></i></button>
+                    </small>
+                </div>        
+                <p class="mb-1">$issue.getTitle()</p>
+            </li>
+        </ul>
+    #end
+#end

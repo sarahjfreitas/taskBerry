@@ -6,6 +6,7 @@ import app.history.History;
 import app.history.HistoryDao;
 import app.history.HistoryData;
 import app.history.HistoryTranslator;
+import app.issue.IssueDao;
 import app.login.LoginController;
 import app.project.Project;
 import app.project.ProjectDao;
@@ -133,7 +134,7 @@ public class TaskController extends AppController {
         List<User> users = UserTranslator.translate(UserDao.findActives());
         List<History> histories = HistoryDao.findByTask(task.getTaskId());
         Map<String, Object> model = new HashMap<>();
-        task.setComments(CommentDao.findByTask(task.getTaskId()));
+        task.setIssues(IssueDao.findByTask(task.getTaskId()));
         model.put("task", task);
         model.put("users", users);
         model.put("statuses", statuses);
