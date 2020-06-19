@@ -16,11 +16,13 @@ public class IndexController extends AppController {
         List<Task> pendingTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.PENDING.name());
         List<Task> progressTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.IN_PROGRESS.name());
         List<Task> testingTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.READY_TO_TEST.name());
+        List<Task> createdTasks = TaskDao.findByUserCreated(user.getUserId());
 
         Map<String, Object> model = new HashMap<>();
         model.put("pendingTasks", pendingTasks);
         model.put("progressTasks", progressTasks);
         model.put("testingTasks", testingTasks);
+        model.put("createdTasks", createdTasks);
 
         return ViewUtil.render(request, model, Path.Template.INDEX);
     };

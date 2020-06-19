@@ -21,7 +21,6 @@ public class CommentTranslator extends AppTranslator {
         comment.setContent(from.content);
         comment.setCreatedIn(Instant.ofEpochSecond(from.createdIn));
         comment.setCreatedBy(UserDao.find(from.createdBy));
-        comment.setIssue(IssueDao.find(from.issueId));
 
         return comment;
     }

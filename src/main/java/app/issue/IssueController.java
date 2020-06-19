@@ -1,8 +1,23 @@
 package app.issue;
 
 import java.time.Instant;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import app.AppController;
+import app.history.History;
+import app.history.HistoryDao;
 import app.login.LoginController;
+import app.task.Status;
+import app.task.Task;
+import app.task.TaskDao;
+import app.user.User;
+import app.user.UserDao;
+import app.user.UserTranslator;
+import app.util.Path;
+import app.util.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -19,5 +34,13 @@ public class IssueController extends AppController {
 
         response.redirect("/tasks/view/"+request.queryParams("taskId")+"/");
         return dataToJson(issueData);
-    };  
+    };
+
+    public static Route view = (Request request, Response response) -> {
+        Issue issue = IssueDao.find(Integer.parseInt(request.params(":id")));
+        Map<String, Object> model = new HashMap<>();
+        model.put("issue", issue);
+
+        return ViewUtil.render(request, model, Path.Template.ISSUE_VIEW);
+    };
 }

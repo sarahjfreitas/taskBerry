@@ -50,6 +50,7 @@ public class TaskController extends AppController {
         task.name = request.queryParams("name");
         task.description = request.queryParams("description");
         task.responsible = Integer.parseInt(request.queryParams("responsible"));
+        task.createdBy = LoginController.getUser().getUserId();
         task.createdIn = Instant.now().getEpochSecond();
         task.currentStatus = Status.PENDING.toString();
         task.projectId = Integer.parseInt(request.queryParams("projectId"));

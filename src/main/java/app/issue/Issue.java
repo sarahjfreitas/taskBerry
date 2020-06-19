@@ -1,6 +1,8 @@
 package app.issue;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import app.AppModel;
 import app.task.Task;
 import app.comment.Comment;
@@ -41,6 +43,5 @@ public class Issue extends AppModel {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }
-    
+    }   
 }

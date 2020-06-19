@@ -10,8 +10,6 @@ create table issues
     FOREIGN KEY (taskId) REFERENCES tasks (taskId)
 );
 
-drop table comments;
-
 create table comments
 (
     commentId INTEGER PRIMARY KEY,

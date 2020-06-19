@@ -8,6 +8,7 @@ public class TaskData extends AppData {
     public String description;
     public String currentStatus;
     public int responsible;
+    public int createdBy;
     public long updatedIn;
     public int projectId;
 }

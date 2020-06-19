@@ -41,7 +41,9 @@ public class Application {
         get("/tasks/delete/:id/", TaskController.delete);
         get("/tasks/view/:id/", TaskController.view);
         post("/comments/", CommentController.create);
+
         post("/issues/", IssueController.create);
+        get("/issues/view/:id/", IssueController.view);
 
         get("/users/", UserController.index);
         get("/users/new/", UserController.add);

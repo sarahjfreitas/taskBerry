@@ -19,7 +19,7 @@ public class CommentController extends AppController {
         commentData.issueId = Integer.parseInt(request.queryParams("issueId"));
         CommentDao.create(commentData);
 
-        response.redirect("/tasks/view/"+request.queryParams("taskId")+"/");
+        response.redirect("/issues/view/"+request.queryParams("issueId")+"/");
         return dataToJson(commentData);
     };
 }

@@ -1,0 +1,11 @@
+#macro(commentBlock $comment)
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><i class="fas fa-user-circle"></i> $comment.getCreatedBy().getName()</h5>
+            <small>$comment.getFormattedCreatedIn()</small>
+        </div>        
+        <p class="mb-1"><pre style="white-space: pre-wrap;">$comment.getContent()</pre></p>
+    </li>
+</ul>
+#end

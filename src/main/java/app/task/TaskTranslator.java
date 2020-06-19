@@ -15,6 +15,7 @@ public class TaskTranslator extends AppTranslator {
         task.setDescription(from.description);
         task.setCurrentStatus(Status.valueOf(from.currentStatus));
         task.setResponsible(UserDao.find(from.responsible));
+        task.setCreatedBy(UserDao.find(from.createdBy));
         task.setCreatedIn(Instant.ofEpochSecond(from.createdIn));
         task.setUpdatedIn(Instant.ofEpochSecond(from.updatedIn));
         task.setProject(ProjectDao.find(from.projectId));
@@ -29,6 +30,7 @@ public class TaskTranslator extends AppTranslator {
         taskData.description = from.getDescription();
         taskData.currentStatus = from.getCurrentStatus().name();
         taskData.responsible = from.getResponsible().getUserId();
+        taskData.createdBy = from.getCreatedBy().getUserId();
         taskData.createdIn = from.getCreatedIn().getEpochSecond();
         if(from.getUpdatedIn() != null)
             taskData.updatedIn = from.getUpdatedIn().getEpochSecond();

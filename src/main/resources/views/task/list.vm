@@ -8,6 +8,7 @@
         <th data-sortable="true">Project</th>
         <th data-sortable="true">Responsible</th>
         <th data-sortable="true">Created In</th>
+        <th data-sortable="true">Updated In</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -20,6 +21,7 @@
             <td>$task.getProject().getName()</td>
             <td>$task.getResponsible().getName()</td>
             <td>$task.getFormattedCreatedIn()</td>
+            <td>$task.getFormattedUpdatedIn()</td>
             <td>
                 <a class="btn btn-outline-dark btn-sm" href="/tasks/view/$task.getTaskId()/"><i class="fas fa-file-alt"></i></a>
                 <a class="btn btn-outline-dark btn-sm" href="/tasks/delete/$task.getTaskId()/"><i class="fas fa-trash"></i></a>

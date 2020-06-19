@@ -19,10 +19,15 @@
         <a class="nav-link" id="testing-tab" data-toggle="tab" href="#testing" role="tab" aria-controls="testing"
            aria-selected="false">Ready to Test</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="created-tab" data-toggle="tab" href="#created" role="tab" aria-controls="created"
+           aria-selected="false">Created by me</a>
+    </li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">#taskList($pendingTasks)</div>
     <div class="tab-pane fade show" id="progress" role="tabpanel" aria-labelledby="progress-tab">#taskList($progressTasks)</div>
     <div class="tab-pane fade show" id="testing" role="tabpanel" aria-labelledby="testing-tab">#taskList($testingTasks)</div>
+    <div class="tab-pane fade show" id="created" role="tabpanel" aria-labelledby="created-tab">#taskList($createdTasks)</div>
 </div>
 #end

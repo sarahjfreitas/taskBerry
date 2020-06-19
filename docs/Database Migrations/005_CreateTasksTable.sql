@@ -6,9 +6,11 @@ create table tasks
     currentStatus TEXT NOT NULL,
     responsible   INT  NOT NULL,
     createdIn     INT  NOT NULL,
+    createdBy     INT  NOT NULL,
     updatedIn     INT  NULL,
     projectId     INT  NOT NULL,
     FOREIGN KEY (responsible) REFERENCES users (userId),
+    FOREIGN KEY (createdBy) REFERENCES users (userId),
     FOREIGN KEY (projectId) REFERENCES projects (projectId)
 );
 
