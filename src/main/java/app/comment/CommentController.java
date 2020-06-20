@@ -15,7 +15,7 @@ public class CommentController extends AppController {
         CommentData commentData = new CommentData();
         commentData.content = request.queryParams("content");
         commentData.createdIn = Instant.now().getEpochSecond();
-        commentData.createdBy = LoginController.getUser().getUserId();
+        commentData.createdBy = LoginController.getUser(request).getUserId();
         commentData.issueId = Integer.parseInt(request.queryParams("issueId"));
         CommentDao.create(commentData);
 

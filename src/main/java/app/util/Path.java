@@ -1,7 +1,5 @@
 package app.util;
 
-import lombok.*;
-
 public class Path {
     // Views paths
     public static class Template {
@@ -19,5 +17,6 @@ public class Path {
         public final static String USER_ADD = "/views/user/new.vm";
         public final static String USER_EDIT = "/views/user/edit.vm";
         public final static String USER_VIEW = "/views/user/view.vm";
+        public final static String LOGIN = "/views/login/login.vm";
     }
 }

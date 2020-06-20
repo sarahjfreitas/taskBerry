@@ -12,7 +12,7 @@ import app.login.LoginController;
 
 public class IndexController extends AppController {
     public static Route index = (Request request, Response response) -> {
-        User user = LoginController.getUser();
+        User user = LoginController.getUser(request);
         List<Task> pendingTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.PENDING.name());
         List<Task> progressTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.IN_PROGRESS.name());
         List<Task> testingTasks = TaskDao.findByUserAndStatus(user.getUserId(), Status.READY_TO_TEST.name());

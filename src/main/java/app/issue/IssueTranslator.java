@@ -4,11 +4,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.AppTranslator;
 import app.comment.CommentDao;
 import app.task.TaskDao;
 import app.user.UserDao;
 
-public class IssueTranslator {
+public class IssueTranslator extends AppTranslator {
 
 	public static List<Issue> translate(List<IssueData> from) {
         List<Issue> issues = new ArrayList<Issue>();

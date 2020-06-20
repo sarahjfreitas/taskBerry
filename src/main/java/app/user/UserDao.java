@@ -18,6 +18,14 @@ public class UserDao extends AppDao {
         return UserTranslator.translate(findData(userId));
     }
 
+    public static User findByUsername(String username){
+        try (Connection conn = TaskBerryConnection.get().open()) {
+            UserData user = conn.createQuery("select * from users where username = :username")
+                    .addParameter("username",username).executeAndFetchFirst(UserData.class);
+            return  UserTranslator.translate(user);
+        }
+    }
+
     public static List<UserData> findAll() {
         try (Connection conn = TaskBerryConnection.get().open()) {
             List<UserData> users = conn.createQuery("select * from users")

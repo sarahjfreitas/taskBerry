@@ -28,7 +28,7 @@ public class IssueController extends AppController {
         IssueData issueData = new IssueData();
         issueData.title = request.queryParams("title");
         issueData.createdIn = Instant.now().getEpochSecond();
-        issueData.createdBy = LoginController.getUser().getUserId();
+        issueData.createdBy = LoginController.getUser(request).getUserId();
         issueData.taskId = Integer.parseInt(request.queryParams("taskId"));
         IssueDao.create(issueData);
 

@@ -25,4 +25,14 @@ public class Filters {
     public static Filter addGzipHeader = (Request request, Response response) -> {
         response.header("Content-Encoding", "gzip");
     };
+
+    public static Filter ensureUserIsLoggedIn = (Request request, Response response) -> {
+        String pathInfo = request.pathInfo();
+        String currentUser = request.session().attribute("currentUser");
+
+        if (!pathInfo.contains("login") && currentUser == null) {
+            request.session().attribute("loginRedirect", pathInfo);
+            response.redirect("/login/");
+        }
+    };
 }

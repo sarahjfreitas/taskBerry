@@ -43,4 +43,13 @@ public class User extends AppModel {
             return "Disabled";
         }
     }
+    
+    public static boolean authenticate(String username, String password){
+        User user = UserDao.findByUsername(username);
+        if(user != null && user.getPassword().equals(password))
+            return true;
+        
+        return false;
+    }
+
 }

@@ -27,7 +27,7 @@ public class ProjectController extends AppController {
         project.setName(request.queryParams("name"));
         project.activate();
         project.setCreatedIn(Instant.now());
-        project.setCreatedBy(LoginController.getUser());
+        project.setCreatedBy(LoginController.getUser(request));
         ProjectDao.create(ProjectTranslator.translate(project));
         response.redirect("/projects/");
 
@@ -46,7 +46,7 @@ public class ProjectController extends AppController {
         Project project = ProjectDao.find(Integer.parseInt(request.params(":id")));
         project.setName(request.queryParams("name"));
         project.setUpdatedIn(Instant.now());
-        project.setUpdatedBy(LoginController.getUser());
+        project.setUpdatedBy(LoginController.getUser(request));
         ProjectDao.update(ProjectTranslator.translate(project));
         response.redirect("/projects/");
 

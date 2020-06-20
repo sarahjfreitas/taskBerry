@@ -4,6 +4,7 @@ import static spark.Spark.*;
 import app.comment.CommentController;
 import app.index.IndexController;
 import app.issue.IssueController;
+import app.login.LoginController;
 import app.project.ProjectController;
 import app.task.TaskController;
 import app.user.UserController;
@@ -22,6 +23,7 @@ public class Application {
         // before-filters (called before each get/post)
         before("*", Filters.addTrailingSlashes);
         before("*", Filters.handleLocaleChange);
+        before("*", Filters.ensureUserIsLoggedIn);
 
         // routes
         get("/projects/", ProjectController.index);
@@ -51,6 +53,9 @@ public class Application {
         post("/users/",UserController.create);
         post("/users/edit/:id/", UserController.update);
         get("/users/delete/:id/", UserController.delete);
+        get("/login/", LoginController.index);
+        post("/login/", LoginController.login);
+        get("/logout/", LoginController.logout);
 
         get("*", IndexController.index);
         
